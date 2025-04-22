@@ -121,6 +121,11 @@ const Index = () => {
                 AniCS — это уникальный ресурс, объединяющий киберспорт CS2 и аниме-эстетику.
                 Мы предоставляем актуальную информацию о командах, игроках и турнирах в оригинальном аниме-стиле.
               </p>
+              <div className="bg-accent/5 border border-accent/20 rounded-lg p-4 mb-6">
+                <p className="text-sm font-medium text-accent">
+                  Работу выполнил: <span className="font-bold">Попов Максим</span>
+                </p>
+              </div>
               <Separator className="my-6" />
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button className="bg-primary hover:bg-primary/90">
@@ -144,7 +149,7 @@ const Index = () => {
               <span className="font-bold">AniCS © 2023</span>
             </div>
             <div className="text-sm text-muted-foreground">
-              Проект создан с любовью к CS2 и аниме
+              Проект создан с любовью к CS2 и аниме <span className="font-medium">Поповым Максимом</span>
             </div>
           </div>
         </div>
