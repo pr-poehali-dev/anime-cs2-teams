@@ -10,32 +10,32 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border">
+    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm border-b">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="bg-gradient-to-r from-accent to-primary rounded-full p-1">
-              <Trophy className="w-6 h-6 text-white" />
+            <div className="bg-primary rounded-md p-1">
+              <Trophy className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-xl text-foreground">
-              Ani<span className="text-primary">CS</span>
+            <span className="font-bold text-xl">
+              CS<span className="text-primary">Stats</span>
             </span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-foreground hover:text-primary transition-colors py-1 px-2">
+            <Link to="/" className="text-foreground hover:text-primary transition-colors">
               Главная
             </Link>
-            <Link to="/teams" className="text-foreground hover:text-primary transition-colors py-1 px-2">
+            <Link to="/teams" className="text-foreground hover:text-primary transition-colors">
               Команды
             </Link>
-            <Link to="/tournaments" className="text-foreground hover:text-primary transition-colors py-1 px-2">
+            <Link to="/tournaments" className="text-foreground hover:text-primary transition-colors">
               Турниры
             </Link>
-            <Link to="/rankings" className="text-foreground hover:text-primary transition-colors py-1 px-2">
+            <Link to="/rankings" className="text-foreground hover:text-primary transition-colors">
               Рейтинги
             </Link>
-            <Link to="/news" className="text-foreground hover:text-primary transition-colors py-1 px-2">
+            <Link to="/news" className="text-foreground hover:text-primary transition-colors">
               Новости
             </Link>
           </nav>
@@ -56,7 +56,7 @@ const Header = () => {
 
       {/* Мобильное меню */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border animate-accordion-down">
+        <div className="md:hidden bg-background border-t animate-accordion-down">
           <div className="container mx-auto px-4 py-3 space-y-3">
             <Link to="/" className="flex items-center space-x-2 py-2 px-3 rounded-md hover:bg-muted transition-colors">
               <Star className="w-5 h-5 text-primary" />
