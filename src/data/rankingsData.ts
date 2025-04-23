@@ -1,250 +1,350 @@
-
 export interface TeamRanking {
-  id: number;
-  position: number;
-  previousPosition: number;
+  rank: number;
+  previousRank: number;
   name: string;
   logo: string;
   country: string;
   points: number;
-  change: number;
-  recentResults: Array<"win" | "loss" | "draw">;
+  form: string[];
+  recentMatches: {
+    opponent: string;
+    result: 'W' | 'L' | 'D';
+    score: string;
+  }[];
 }
 
 export interface PlayerRanking {
-  id: number;
-  position: number;
-  previousPosition: number;
+  rank: number;
+  previousRank: number;
   name: string;
   nickname: string;
-  team: string;
+  photo: string;
   country: string;
+  team: string;
   rating: number;
-  change: number;
+  kd: number;
+  kpr: number;
+  impact: number;
 }
 
-export const teamRankings: TeamRanking[] = [
+export const teamsRanking: TeamRanking[] = [
   {
-    id: 1,
-    position: 1,
-    previousPosition: 1,
+    rank: 1,
+    previousRank: 1,
+    name: "Natus Vincere",
+    logo: "/placeholder.svg",
+    country: "Украина",
+    points: 1027,
+    form: ["W", "W", "W", "L", "W"],
+    recentMatches: [
+      { opponent: "G2 Esports", result: "W", score: "2-0" },
+      { opponent: "Team Vitality", result: "W", score: "2-1" },
+      { opponent: "FaZe Clan", result: "W", score: "2-0" },
+      { opponent: "Team Vitality", result: "L", score: "1-3" },
+      { opponent: "Cloud9", result: "W", score: "2-0" }
+    ]
+  },
+  {
+    rank: 2,
+    previousRank: 3,
+    name: "Team Vitality",
+    logo: "/placeholder.svg",
+    country: "Франция",
+    points: 978,
+    form: ["W", "L", "W", "W", "W"],
+    recentMatches: [
+      { opponent: "Astralis", result: "W", score: "2-0" },
+      { opponent: "Natus Vincere", result: "L", score: "1-2" },
+      { opponent: "FaZe Clan", result: "W", score: "2-1" },
+      { opponent: "Natus Vincere", result: "W", score: "3-1" },
+      { opponent: "G2 Esports", result: "W", score: "2-1" }
+    ]
+  },
+  {
+    rank: 3,
+    previousRank: 2,
     name: "FaZe Clan",
     logo: "/placeholder.svg",
-    country: "International",
-    points: 1000,
-    change: 0,
-    recentResults: ["win", "win", "win", "win", "loss"]
+    country: "Интернациональная",
+    points: 962,
+    form: ["L", "W", "L", "W", "W"],
+    recentMatches: [
+      { opponent: "Cloud9", result: "L", score: "1-2" },
+      { opponent: "MOUZ", result: "W", score: "2-0" },
+      { opponent: "Team Vitality", result: "L", score: "1-2" },
+      { opponent: "G2 Esports", result: "W", score: "2-1" },
+      { opponent: "Virtus.pro", result: "W", score: "2-0" }
+    ]
   },
   {
-    id: 2,
-    position: 2,
-    previousPosition: 3,
-    name: "Vitality",
-    logo: "/placeholder.svg",
-    country: "France",
-    points: 890,
-    change: 1,
-    recentResults: ["win", "win", "loss", "win", "win"]
-  },
-  {
-    id: 3,
-    position: 3,
-    previousPosition: 2,
+    rank: 4,
+    previousRank: 4,
     name: "G2 Esports",
     logo: "/placeholder.svg",
-    country: "International",
-    points: 880,
-    change: -1,
-    recentResults: ["loss", "win", "win", "win", "win"]
+    country: "Интернациональная",
+    points: 884,
+    form: ["L", "W", "L", "L", "L"],
+    recentMatches: [
+      { opponent: "Natus Vincere", result: "L", score: "0-2" },
+      { opponent: "Cloud9", result: "W", score: "2-1" },
+      { opponent: "FaZe Clan", result: "L", score: "1-2" },
+      { opponent: "Astralis", result: "L", score: "0-2" },
+      { opponent: "Team Vitality", result: "L", score: "1-2" }
+    ]
   },
   {
-    id: 4,
-    position: 4,
-    previousPosition: 4,
-    name: "NAVI",
-    logo: "/placeholder.svg",
-    country: "Ukraine",
-    points: 820,
-    change: 0,
-    recentResults: ["win", "win", "win", "loss", "loss"]
-  },
-  {
-    id: 5,
-    position: 5,
-    previousPosition: 8,
+    rank: 5,
+    previousRank: 7,
     name: "Cloud9",
     logo: "/placeholder.svg",
-    country: "Russia",
-    points: 750,
-    change: 3,
-    recentResults: ["win", "win", "win", "win", "win"]
+    country: "Интернациональная",
+    points: 825,
+    form: ["W", "L", "W", "W", "L"],
+    recentMatches: [
+      { opponent: "FaZe Clan", result: "W", score: "2-1" },
+      { opponent: "G2 Esports", result: "L", score: "1-2" },
+      { opponent: "MOUZ", result: "W", score: "2-0" },
+      { opponent: "Virtus.pro", result: "W", score: "2-0" },
+      { opponent: "Natus Vincere", result: "L", score: "0-2" }
+    ]
   },
   {
-    id: 6,
-    position: 6,
-    previousPosition: 5,
+    rank: 6,
+    previousRank: 5,
+    name: "Team Liquid",
+    logo: "/placeholder.svg",
+    country: "США",
+    points: 782,
+    form: ["W", "L", "L", "W", "W"],
+    recentMatches: [
+      { opponent: "FURIA Esports", result: "W", score: "2-1" },
+      { opponent: "MOUZ", result: "L", score: "1-2" },
+      { opponent: "Astralis", result: "L", score: "1-2" },
+      { opponent: "FURIA Esports", result: "W", score: "2-0" },
+      { opponent: "Evil Geniuses", result: "W", score: "2-0" }
+    ]
+  },
+  {
+    rank: 7,
+    previousRank: 6,
+    name: "Virtus.pro",
+    logo: "/placeholder.svg",
+    country: "Россия",
+    points: 743,
+    form: ["W", "L", "L", "L", "W"],
+    recentMatches: [
+      { opponent: "Astralis", result: "W", score: "2-1" },
+      { opponent: "MOUZ", result: "L", score: "0-2" },
+      { opponent: "Cloud9", result: "L", score: "0-2" },
+      { opponent: "FaZe Clan", result: "L", score: "0-2" },
+      { opponent: "Team Spirit", result: "W", score: "2-0" }
+    ]
+  },
+  {
+    rank: 8,
+    previousRank: 10,
     name: "MOUZ",
     logo: "/placeholder.svg",
-    country: "International",
-    points: 720,
-    change: -1,
-    recentResults: ["loss", "win", "loss", "win", "win"]
+    country: "Европа",
+    points: 710,
+    form: ["W", "L", "W", "L", "W"],
+    recentMatches: [
+      { opponent: "Virtus.pro", result: "W", score: "2-0" },
+      { opponent: "FaZe Clan", result: "L", score: "0-2" },
+      { opponent: "Team Liquid", result: "W", score: "2-1" },
+      { opponent: "Cloud9", result: "L", score: "0-2" },
+      { opponent: "FURIA Esports", result: "W", score: "2-0" }
+    ]
   },
   {
-    id: 7,
-    position: 7,
-    previousPosition: 7,
-    name: "Complexity",
-    logo: "/placeholder.svg",
-    country: "North America",
-    points: 680,
-    change: 0,
-    recentResults: ["win", "loss", "win", "loss", "win"]
-  },
-  {
-    id: 8,
-    position: 8,
-    previousPosition: 10,
-    name: "ENCE",
-    logo: "/placeholder.svg",
-    country: "International",
-    points: 650,
-    change: 2,
-    recentResults: ["win", "win", "loss", "win", "loss"]
-  },
-  {
-    id: 9,
-    position: 9,
-    previousPosition: 6,
+    rank: 9,
+    previousRank: 8,
     name: "Astralis",
     logo: "/placeholder.svg",
-    country: "Denmark",
-    points: 630,
-    change: -3,
-    recentResults: ["loss", "loss", "win", "loss", "win"]
+    country: "Дания",
+    points: 685,
+    form: ["L", "W", "W", "W", "L"],
+    recentMatches: [
+      { opponent: "Team Vitality", result: "L", score: "0-2" },
+      { opponent: "Virtus.pro", result: "W", score: "2-1" },
+      { opponent: "Team Liquid", result: "W", score: "2-1" },
+      { opponent: "G2 Esports", result: "W", score: "2-0" },
+      { opponent: "Team Liquid", result: "L", score: "0-2" }
+    ]
   },
   {
-    id: 10,
-    position: 10,
-    previousPosition: 9,
-    name: "FURIA",
+    rank: 10,
+    previousRank: 9,
+    name: "FURIA Esports",
     logo: "/placeholder.svg",
-    country: "Brazil",
-    points: 610,
-    change: -1,
-    recentResults: ["loss", "win", "loss", "win", "loss"]
+    country: "Бразилия",
+    points: 637,
+    form: ["L", "W", "L", "L", "L"],
+    recentMatches: [
+      { opponent: "Team Liquid", result: "L", score: "1-2" },
+      { opponent: "Evil Geniuses", result: "W", score: "2-0" },
+      { opponent: "Team Liquid", result: "L", score: "0-2" },
+      { opponent: "MOUZ", result: "L", score: "0-2" },
+      { opponent: "Complexity", result: "L", score: "1-2" }
+    ]
   }
 ];
 
-export const playerRankings: PlayerRanking[] = [
+export const playersRanking: PlayerRanking[] = [
   {
-    id: 1,
-    position: 1,
-    previousPosition: 1,
-    name: "Oleksandr Kostyliev",
+    rank: 1,
+    previousRank: 1,
+    name: "Александр Костылев",
     nickname: "s1mple",
-    team: "NAVI",
-    country: "Ukraine",
+    photo: "/placeholder.svg",
+    country: "Украина",
+    team: "Natus Vincere",
     rating: 1.32,
-    change: 0
+    kd: 1.43,
+    kpr: 0.86,
+    impact: 1.41
   },
   {
-    id: 2,
-    position: 2,
-    previousPosition: 2,
-    name: "Mathieu Herbaut",
+    rank: 2,
+    previousRank: 2,
+    name: "Матье Эрбо",
     nickname: "ZywOo",
-    team: "Vitality",
-    country: "France",
-    rating: 1.30,
-    change: 0
+    photo: "/placeholder.svg",
+    country: "Франция",
+    team: "Team Vitality",
+    rating: 1.31,
+    kd: 1.41,
+    kpr: 0.85,
+    impact: 1.39
   },
   {
-    id: 3,
-    position: 3,
-    previousPosition: 5,
-    name: "Nikola Kovač",
-    nickname: "NiKo",
-    team: "G2 Esports",
-    country: "Bosnia and Herzegovina",
-    rating: 1.28,
-    change: 2
-  },
-  {
-    id: 4,
-    position: 4,
-    previousPosition: 3,
-    name: "Dmitry Sokolov",
-    nickname: "sh1ro",
-    team: "Cloud9",
-    country: "Russia",
-    rating: 1.27,
-    change: -1
-  },
-  {
-    id: 5,
-    position: 5,
-    previousPosition: 4,
-    name: "Ilya Zalutskiy",
+    rank: 3,
+    previousRank: 5,
+    name: "Илья Маливаненко",
     nickname: "m0NESY",
+    photo: "/placeholder.svg",
+    country: "Россия",
     team: "G2 Esports",
-    country: "Russia",
-    rating: 1.26,
-    change: -1
+    rating: 1.28,
+    kd: 1.33,
+    kpr: 0.82,
+    impact: 1.35
   },
   {
-    id: 6,
-    position: 6,
-    previousPosition: 6,
-    name: "Robin Kool",
+    rank: 4,
+    previousRank: 3,
+    name: "Робин Копперанс",
     nickname: "ropz",
+    photo: "/placeholder.svg",
+    country: "Эстония",
     team: "FaZe Clan",
-    country: "Estonia",
+    rating: 1.26,
+    kd: 1.29,
+    kpr: 0.78,
+    impact: 1.31
+  },
+  {
+    rank: 5,
+    previousRank: 4,
+    name: "Дмитрий Соколов",
+    nickname: "sh1ro",
+    photo: "/placeholder.svg",
+    country: "Россия",
+    team: "Cloud9",
     rating: 1.24,
-    change: 0
+    kd: 1.31,
+    kpr: 0.76,
+    impact: 1.28
   },
   {
-    id: 7,
-    position: 7,
-    previousPosition: 8,
-    name: "Russel Van Dulken",
+    rank: 6,
+    previousRank: 7,
+    name: "Валерий Ваховский",
+    nickname: "b1t",
+    photo: "/placeholder.svg",
+    country: "Украина",
+    team: "Natus Vincere",
+    rating: 1.23,
+    kd: 1.28,
+    kpr: 0.74,
+    impact: 1.27
+  },
+  {
+    rank: 7,
+    previousRank: 6,
+    name: "Рассел Ван Дулкен",
     nickname: "Twistzz",
+    photo: "/placeholder.svg",
+    country: "Канада",
     team: "FaZe Clan",
-    country: "Canada",
-    rating: 1.22,
-    change: 1
+    rating: 1.21,
+    kd: 1.24,
+    kpr: 0.73,
+    impact: 1.25
   },
   {
-    id: 8,
-    position: 8,
-    previousPosition: 7,
-    name: "Håvard Nygaard",
-    nickname: "rain",
-    team: "FaZe Clan",
-    country: "Norway",
-    rating: 1.20,
-    change: -1
-  },
-  {
-    id: 9,
-    position: 9,
-    previousPosition: 11,
-    name: "Lotan Giladi",
-    nickname: "Spinx",
-    team: "Vitality",
-    country: "Israel",
+    rank: 8,
+    previousRank: 11,
+    name: "Лукас Росенхольм",
+    nickname: "misutaaa",
+    photo: "/placeholder.svg",
+    country: "Франция",
+    team: "Team Vitality",
     rating: 1.19,
-    change: 2
+    kd: 1.22,
+    kpr: 0.71,
+    impact: 1.23
   },
   {
-    id: 10,
-    position: 10,
-    previousPosition: 9,
-    name: "David Čerňanský",
+    rank: 9,
+    previousRank: 10,
+    name: "Давид Чернобай",
     nickname: "frozen",
-    team: "MOUZ",
-    country: "Slovakia",
+    photo: "/placeholder.svg",
+    country: "Словакия",
+    team: "FaZe Clan",
     rating: 1.18,
-    change: -1
+    kd: 1.21,
+    kpr: 0.72,
+    impact: 1.20
+  },
+  {
+    rank: 10,
+    previousRank: 9,
+    name: "Сергей Рыхторов",
+    nickname: "Ax1Le",
+    photo: "/placeholder.svg",
+    country: "Россия",
+    team: "Cloud9",
+    rating: 1.17,
+    kd: 1.19,
+    kpr: 0.69,
+    impact: 1.22
+  },
+  {
+    rank: 11,
+    previousRank: 8,
+    name: "Никола Ковач",
+    nickname: "NiKo",
+    photo: "/placeholder.svg",
+    country: "Босния и Герцеговина",
+    team: "G2 Esports",
+    rating: 1.16,
+    kd: 1.18,
+    kpr: 0.71,
+    impact: 1.21
+  },
+  {
+    rank: 12,
+    previousRank: 17,
+    name: "Илья Залуцкий",
+    nickname: "w0nderful",
+    photo: "/placeholder.svg",
+    country: "Украина",
+    team: "Natus Vincere",
+    rating: 1.15,
+    kd: 1.17,
+    kpr: 0.70,
+    impact: 1.19
   }
 ];
