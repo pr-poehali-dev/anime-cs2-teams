@@ -1,31 +1,36 @@
 
+import { ArrowDown, ArrowUp, Minus } from "lucide-react";
+
 interface PositionChangeProps {
-  change: number;
-  showFullText?: boolean;
+  current: number;
+  previous: number;
 }
 
-const PositionChange = ({ change, showFullText = false }: PositionChangeProps) => {
+const PositionChange = ({ current, previous }: PositionChangeProps) => {
+  const change = previous - current;
+  
   if (change > 0) {
     return (
-      <span className="text-green-500">
-        {showFullText ? `+${change}` : <span>▲{change}</span>}
-      </span>
+      <div className="flex items-center text-green-500 whitespace-nowrap">
+        <ArrowUp className="w-4 h-4 mr-1" />
+        <span>{change}</span>
+      </div>
     );
-  }
-  
-  if (change < 0) {
+  } else if (change < 0) {
     return (
-      <span className="text-red-500">
-        {showFullText ? `${change}` : <span>▼{Math.abs(change)}</span>}
-      </span>
+      <div className="flex items-center text-red-500 whitespace-nowrap">
+        <ArrowDown className="w-4 h-4 mr-1" />
+        <span>{Math.abs(change)}</span>
+      </div>
+    );
+  } else {
+    return (
+      <div className="flex items-center text-gray-400 whitespace-nowrap">
+        <Minus className="w-4 h-4 mr-1" />
+        <span>0</span>
+      </div>
     );
   }
-  
-  return (
-    <span className="text-muted-foreground">
-      {showFullText ? '0' : '■'}
-    </span>
-  );
 };
 
 export default PositionChange;

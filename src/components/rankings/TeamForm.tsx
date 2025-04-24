@@ -1,22 +1,27 @@
 
 interface TeamFormProps {
-  results: Array<"win" | "loss" | "draw">;
+  results: string[];
 }
 
 const TeamForm = ({ results }: TeamFormProps) => {
   return (
-    <div className="flex justify-center space-x-1">
-      {results.map((result, index) => (
-        <span
-          key={index}
-          className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold
-            ${result === 'win' ? 'bg-green-500 text-white' : 
-              result === 'loss' ? 'bg-red-500 text-white' : 
-              'bg-amber-500 text-white'}`}
-        >
-          {result === 'win' ? 'W' : result === 'loss' ? 'L' : 'D'}
-        </span>
-      ))}
+    <div className="flex gap-1">
+      {results.map((result, index) => {
+        let bgColor = "bg-gray-400";
+        if (result === "W") bgColor = "bg-green-500";
+        if (result === "L") bgColor = "bg-red-500";
+        if (result === "D") bgColor = "bg-yellow-500";
+        
+        return (
+          <div 
+            key={index} 
+            className={`${bgColor} w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white`}
+            title={result === "W" ? "Победа" : result === "L" ? "Поражение" : "Ничья"}
+          >
+            {result}
+          </div>
+        );
+      })}
     </div>
   );
 };

@@ -27,15 +27,12 @@ const TeamsTable = ({ teams }: TeamsTableProps) => {
             {teams.length > 0 ? (
               teams.map((team) => (
                 <tr 
-                  key={team.id} 
+                  key={team.name} 
                   className="border-b border-border/50 hover:bg-card/90 transition-colors"
                 >
                   <td className="p-4">
                     <div className="flex items-center">
-                      <span className="font-bold">{team.position}</span>
-                      <span className="ml-2 text-xs">
-                        <PositionChange change={team.change} />
-                      </span>
+                      <span className="font-bold">{team.rank}</span>
                     </div>
                   </td>
                   <td className="p-4">
@@ -49,10 +46,10 @@ const TeamsTable = ({ teams }: TeamsTableProps) => {
                   <td className="p-4 text-center">{team.country}</td>
                   <td className="p-4 text-center font-mono font-semibold">{team.points}</td>
                   <td className="p-4 text-center">
-                    <PositionChange change={team.change} showFullText />
+                    <PositionChange current={team.rank} previous={team.previousRank} />
                   </td>
                   <td className="p-4">
-                    <TeamForm results={team.recentResults} />
+                    <TeamForm results={team.form} />
                   </td>
                 </tr>
               ))

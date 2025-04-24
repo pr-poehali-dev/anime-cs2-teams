@@ -2,8 +2,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Separator } from "@/components/ui/separator";
-import { teamRankings, playerRankings } from "@/data/rankingsData";
+import { teamsRanking, playersRanking } from "@/data/rankingsData";
 import RankingsFilter from "@/components/rankings/RankingsFilter";
 import TeamsTable from "@/components/rankings/TeamsTable";
 import PlayersTable from "@/components/rankings/PlayersTable";
@@ -14,13 +13,13 @@ const Rankings = () => {
   const [timeRange, setTimeRange] = useState("3m");
 
   // Фильтрация команд по поисковому запросу
-  const filteredTeams = teamRankings.filter(team => 
+  const filteredTeams = teamsRanking.filter(team => 
     team.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     team.country.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Фильтрация игроков по поисковому запросу
-  const filteredPlayers = playerRankings.filter(player => 
+  const filteredPlayers = playersRanking.filter(player => 
     player.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     player.nickname.toLowerCase().includes(searchTerm.toLowerCase()) ||
     player.team.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -75,7 +74,8 @@ const Rankings = () => {
       <footer className="border-t border-border mt-10 py-6 bg-background/30 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <p className="text-center text-sm text-muted-foreground">
-            © 2023 AniCS - Рейтинги обновляются еженедельно на основе результатов официальных матчей
+            © 2025 CSStats - Рейтинги обновляются еженедельно на основе результатов официальных матчей. 
+            Работу выполнил Попов Максим
           </p>
         </div>
       </footer>
