@@ -39,7 +39,7 @@ const newsData: NewsItem[] = [
     publishDate: "24 февраля 2024",
     readTime: "4 мин",
     author: {
-      name: "Мику Хацунэ",
+      name: "SEYDZURO",
       avatar: "/placeholder.svg"
     },
     featured: true
@@ -54,7 +54,7 @@ const newsData: NewsItem[] = [
     publishDate: "15 февраля 2024",
     readTime: "3 мин",
     author: {
-      name: "Рин Тосака",
+      name: "SEYDZURO",
       avatar: "/placeholder.svg"
     }
   },
@@ -68,7 +68,7 @@ const newsData: NewsItem[] = [
     publishDate: "10 февраля 2024",
     readTime: "6 мин",
     author: {
-      name: "Асуна Юки",
+      name: "SEYDZURO",
       avatar: "/placeholder.svg"
     }
   },
@@ -82,7 +82,7 @@ const newsData: NewsItem[] = [
     publishDate: "5 февраля 2024",
     readTime: "3 мин",
     author: {
-      name: "Лелуш Ламперуж",
+      name: "SEYDZURO",
       avatar: "/placeholder.svg"
     }
   },
@@ -96,7 +96,7 @@ const newsData: NewsItem[] = [
     publishDate: "1 февраля 2024",
     readTime: "5 мин",
     author: {
-      name: "Сейбер",
+      name: "SEYDZURO",
       avatar: "/placeholder.svg"
     }
   },
@@ -110,7 +110,7 @@ const newsData: NewsItem[] = [
     publishDate: "28 января 2024",
     readTime: "4 мин",
     author: {
-      name: "Киритто",
+      name: "SEYDZURO",
       avatar: "/placeholder.svg"
     }
   }
@@ -148,7 +148,7 @@ const News = () => {
           {/* Заголовок страницы */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+              <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700">
                 Новости CS2
               </h1>
               <p className="mt-2 text-muted-foreground">
@@ -173,10 +173,10 @@ const News = () => {
           
           {/* Главная новость (featured) */}
           {featuredNews && (
-            <Card className="overflow-hidden border-2 border-primary/20 bg-background/50 backdrop-blur-sm hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
+            <Card className="overflow-hidden border border-primary/20 bg-background/50 backdrop-blur-sm hover:shadow-md transition-all duration-300">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="relative overflow-hidden h-[250px] md:h-full">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 to-transparent mix-blend-overlay" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay" />
                   <img 
                     src={featuredNews.coverImage} 
                     alt={featuredNews.title} 
@@ -199,7 +199,7 @@ const News = () => {
                   <div className="mt-6">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <Avatar className="h-8 w-8 border-2 border-primary/20">
+                        <Avatar className="h-8 w-8 border border-primary/20">
                           <img src={featuredNews.author.avatar} alt={featuredNews.author.name} />
                         </Avatar>
                         <div>
