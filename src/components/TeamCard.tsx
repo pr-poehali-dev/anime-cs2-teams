@@ -18,7 +18,7 @@ interface TeamCardProps {
     country: string;
     photo?: string;
   }[];
-  achievements?: string[];
+  achievements?: string[] | string;
 }
 
 const TeamCard = ({
@@ -31,6 +31,11 @@ const TeamCard = ({
   players,
   achievements = [],
 }: TeamCardProps) => {
+  // Преобразуем achievements в массив, если это строка
+  const achievementsArray = typeof achievements === 'string' 
+    ? achievements.split(', ') 
+    : Array.isArray(achievements) ? achievements : [];
+
   return (
     <Card className="team-card overflow-hidden bg-gradient-to-br from-card-gradient to-transparent animate-fade-in">
       <CardContent className="p-6">
@@ -88,7 +93,7 @@ const TeamCard = ({
           </ul>
         </div>
 
-        {achievements.length > 0 && (
+        {achievementsArray.length > 0 && (
           <div className="mt-4">
             <div className="flex justify-between items-center mb-2">
               <h4 className="text-sm font-medium flex items-center">
@@ -97,14 +102,14 @@ const TeamCard = ({
               </h4>
             </div>
             <div className="flex flex-wrap gap-1">
-              {achievements.slice(0, 2).map((achievement, i) => (
+              {achievementsArray.slice(0, 2).map((achievement, i) => (
                 <Badge key={i} variant="secondary" className="text-xs font-normal">
                   {achievement}
                 </Badge>
               ))}
-              {achievements.length > 2 && (
+              {achievementsArray.length > 2 && (
                 <Badge variant="outline" className="text-xs">
-                  +{achievements.length - 2}
+                  +{achievementsArray.length - 2}
                 </Badge>
               )}
             </div>
