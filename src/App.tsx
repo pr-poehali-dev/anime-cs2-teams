@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 
 // Ленивая загрузка страниц для повышения производительности
 const Teams = lazy(() => import('./pages/Teams'));
+const TeamDetail = lazy(() => import('./pages/TeamDetail'));
 const Tournaments = lazy(() => import('./pages/Tournaments'));
 const Rankings = lazy(() => import('./pages/Rankings'));
 const News = lazy(() => import('./pages/News'));
@@ -40,6 +41,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/teams" element={<Teams />} />
+            <Route path="/teams/:id" element={<TeamDetail />} />
             <Route path="/tournaments" element={<Tournaments />} />
             <Route path="/rankings" element={<Rankings />} />
             <Route path="/news" element={<News />} />
