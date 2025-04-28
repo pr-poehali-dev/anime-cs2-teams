@@ -9,7 +9,7 @@ interface TeamCardProps {
   name: string;
   logo: string;
   country: string;
-  countryCode: string;
+  countryCode?: string;
   rank?: number;
   players: {
     id: number;
@@ -60,11 +60,13 @@ const TeamCard = ({
             <div className="flex items-center text-sm text-muted-foreground mt-1">
               <MapPin className="h-3.5 w-3.5 mr-1" />
               <span className="flex items-center">
-                <img 
-                  src={`https://flagcdn.com/24x18/${countryCode.toLowerCase()}.png`}
-                  alt={country}
-                  className="w-4 h-3 mr-1.5"
-                />
+                {countryCode ? (
+                  <img 
+                    src={`https://flagcdn.com/24x18/${countryCode.toLowerCase()}.png`}
+                    alt={country}
+                    className="w-4 h-3 mr-1.5"
+                  />
+                ) : null}
                 {country}
               </span>
             </div>
