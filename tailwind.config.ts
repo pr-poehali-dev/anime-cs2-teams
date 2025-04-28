@@ -84,15 +84,34 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': { 
+					"0%": { opacity: "0", transform: "translateY(10px)" }, 
+					"100%": { opacity: "1", transform: "translateY(0)" } 
+				},
+				'scale-in': { 
+					"0%": { transform: "scale(0.95)", opacity: "0" }, 
+					"100%": { transform: "scale(1)", opacity: "1" } 
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'scale-in': 'scale-in 0.2s ease-out'
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-			}
+				heading: ['Raleway', 'sans-serif'],
+			},
+			boxShadow: {
+				'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+				'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+			},
+			backgroundImage: {
+				'hero-pattern': 'linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1))',
+				'card-gradient': 'linear-gradient(to bottom right, rgba(59, 130, 246, 0.05), rgba(255, 255, 255, 0))',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
