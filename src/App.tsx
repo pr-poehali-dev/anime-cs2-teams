@@ -13,6 +13,7 @@ const Tournaments = lazy(() => import('./pages/Tournaments'));
 const Rankings = lazy(() => import('./pages/Rankings'));
 const News = lazy(() => import('./pages/News'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const Players = lazy(() => import('./pages/Players'));
 
 // Fallback загрузки для Suspense
 const PageLoading = () => (
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="/tournaments" element={<Tournaments />} />
             <Route path="/rankings" element={<Rankings />} />
             <Route path="/news" element={<News />} />
+            <Route path="/players" element={<Players />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

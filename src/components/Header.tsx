@@ -1,159 +1,139 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Trophy, Menu, X, Users, BarChart2, Newspaper, Home } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { 
+  Home, 
+  Users, 
+  Trophy, 
+  BarChart3, 
+  Newspaper, 
+  Menu, 
+  X, 
+  Target
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
+import useMobile from '@/hooks/use-mobile';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { isMobile } = useMobile();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  // Проверка активной ссылки
+  const isActive = (path: string) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname.startsWith(path);
   };
 
+  // Эффект для отслеживания скролла
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+  const navigationItems = [
+    { path: '/', label: 'Главная', icon: <Home className="h-4 w-4" /> },
+    { path: '/teams', label: 'Команды', icon: <Users className="h-4 w-4" /> },
+    { path: '/players', label: 'Игроки', icon: <Target className="h-4 w-4" /> },
+    { path: '/tournaments', label: 'Турниры', icon: <Trophy className="h-4 w-4" /> },
+    { path: '/rankings', label: 'Рейтинги', icon: <BarChart3 className="h-4 w-4" /> },
+    { path: '/news', label: 'Новости', icon: <Newspaper className="h-4 w-4" /> },
+  ];
 
-  // Закрыть меню при переходе на новую страницу
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location]);
+  const NavLink = ({ path, label, icon, mobile = false }: { path: string; label: string; icon: React.ReactNode; mobile?: boolean }) => {
+    return (
+      <Link to={path} onClick={() => mobile && setIsSheetOpen(false)}>
+        <Button
+          variant={isActive(path) ? 'default' : 'ghost'}
+          size={mobile ? 'default' : 'sm'}
+          className={cn(
+            'gap-2',
+            mobile && 'w-full justify-start py-6',
+            isActive(path) && !mobile && 'bg-primary/10 text-primary hover:bg-primary/20',
+          )}
+        >
+          {icon}
+          {label}
+        </Button>
+      </Link>
+    );
+  };
 
   return (
     <header 
       className={cn(
-        "sticky top-0 z-50 w-full backdrop-blur-sm transition-all duration-200",
-        isScrolled ? "bg-background/95 shadow-sm border-b" : "bg-background/70"
+        'sticky top-0 z-40 w-full transition-all duration-200',
+        isScrolled 
+          ? 'bg-background/80 backdrop-blur-lg shadow-sm' 
+          : 'bg-transparent'
       )}
     >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="bg-primary rounded-md p-1.5 transition-transform group-hover:scale-110">
-              <Trophy className="w-5 h-5 text-white" />
-            </div>
-            <span className="font-heading text-xl tracking-tight">
-              CS<span className="text-primary font-extrabold">Stats</span>
-            </span>
+      <div className="container mx-auto px-4">
+        <div className="flex h-16 items-center justify-between">
+          {/* Логотип */}
+          <Link to="/" className="flex items-center gap-2 font-heading">
+            <img src="/favicon.svg" alt="CS2 Teams" className="h-8 w-8" />
+            <span className="font-bold text-xl hidden sm:inline-block">CS2 Teams</span>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-1">
-            <NavLink to="/" active={isActive("/")}>
-              <Home className="w-4 h-4 mr-1.5" />
-              Главная
-            </NavLink>
-            <NavLink to="/teams" active={isActive("/teams")}>
-              <Users className="w-4 h-4 mr-1.5" />
-              Команды
-            </NavLink>
-            <NavLink to="/tournaments" active={isActive("/tournaments")}>
-              <Trophy className="w-4 h-4 mr-1.5" />
-              Турниры
-            </NavLink>
-            <NavLink to="/rankings" active={isActive("/rankings")}>
-              <BarChart2 className="w-4 h-4 mr-1.5" />
-              Рейтинги
-            </NavLink>
-            <NavLink to="/news" active={isActive("/news")}>
-              <Newspaper className="w-4 h-4 mr-1.5" />
-              Новости
-            </NavLink>
-          </nav>
+          {/* Навигация для десктопа */}
+          {!isMobile && (
+            <nav className="flex items-center gap-1">
+              {navigationItems.map((item) => (
+                <NavLink key={item.path} {...item} />
+              ))}
+            </nav>
+          )}
 
-          <button 
-            className="md:hidden focus:outline-none" 
-            onClick={toggleMenu}
-            aria-label="Меню"
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6 text-foreground" />
-            ) : (
-              <Menu className="w-6 h-6 text-foreground" />
-            )}
-          </button>
+          {/* Мобильное меню */}
+          {isMobile && (
+            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="sm" className="px-2">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Меню</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[80%] sm:w-[350px] p-0">
+                <div className="flex flex-col h-full">
+                  <div className="px-4 py-5 flex items-center justify-between border-b">
+                    <div className="flex items-center gap-2">
+                      <img src="/favicon.svg" alt="CS2 Teams" className="h-8 w-8" />
+                      <span className="font-bold text-xl">CS2 Teams</span>
+                    </div>
+                    <SheetTrigger asChild>
+                      <Button variant="ghost" size="sm" className="px-2">
+                        <X className="h-5 w-5" />
+                      </Button>
+                    </SheetTrigger>
+                  </div>
+                  
+                  <nav className="flex-1 p-4 space-y-2">
+                    {navigationItems.map((item) => (
+                      <NavLink key={item.path} {...item} mobile />
+                    ))}
+                  </nav>
+                  
+                  <div className="border-t p-4">
+                    <p className="text-xs text-muted-foreground text-center">
+                      CS2 Teams © 2025
+                    </p>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          )}
         </div>
       </div>
-
-      {/* Мобильное меню */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md animate-fade-in">
-          <div className="container mx-auto px-4 py-4 space-y-2">
-            <MobileNavLink to="/" icon={<Home className="w-5 h-5 text-primary" />} active={isActive("/")}>
-              Главная
-            </MobileNavLink>
-            <MobileNavLink to="/teams" icon={<Users className="w-5 h-5 text-primary" />} active={isActive("/teams")}>
-              Команды
-            </MobileNavLink>
-            <MobileNavLink to="/tournaments" icon={<Trophy className="w-5 h-5 text-primary" />} active={isActive("/tournaments")}>
-              Турниры
-            </MobileNavLink>
-            <MobileNavLink to="/rankings" icon={<BarChart2 className="w-5 h-5 text-primary" />} active={isActive("/rankings")}>
-              Рейтинги
-            </MobileNavLink>
-            <MobileNavLink to="/news" icon={<Newspaper className="w-5 h-5 text-primary" />} active={isActive("/news")}>
-              Новости
-            </MobileNavLink>
-          </div>
-        </div>
-      )}
     </header>
-  );
-};
-
-interface NavLinkProps {
-  to: string;
-  children: React.ReactNode;
-  active: boolean;
-}
-
-const NavLink: React.FC<NavLinkProps> = ({ to, children, active }) => {
-  return (
-    <Link 
-      to={to} 
-      className={cn(
-        "flex items-center py-2 px-3 rounded-md font-medium text-sm transition-colors",
-        active 
-          ? "bg-primary/10 text-primary" 
-          : "text-foreground/80 hover:text-primary hover:bg-primary/5"
-      )}
-    >
-      {children}
-    </Link>
-  );
-};
-
-interface MobileNavLinkProps {
-  to: string;
-  children: React.ReactNode;
-  icon: React.ReactNode;
-  active: boolean;
-}
-
-const MobileNavLink: React.FC<MobileNavLinkProps> = ({ to, children, icon, active }) => {
-  return (
-    <Link 
-      to={to} 
-      className={cn(
-        "flex items-center space-x-3 py-3 px-4 rounded-md transition-all",
-        active 
-          ? "bg-primary/10 text-primary font-medium" 
-          : "text-foreground/80 hover:bg-muted"
-      )}
-    >
-      {icon}
-      <span>{children}</span>
-    </Link>
   );
 };
 
