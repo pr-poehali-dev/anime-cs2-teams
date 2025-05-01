@@ -1,3 +1,4 @@
+
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export type TournamentFilterValue = "all" | "upcoming" | "ongoing" | "completed";
@@ -10,7 +11,7 @@ interface TournamentFiltersProps {
 /**
  * Компонент с фильтрами для турниров
  */
-export const TournamentFilters = ({ activeFilter, onFilterChange }: TournamentFiltersProps) => {
+const TournamentFilters = ({ activeFilter, onFilterChange }: TournamentFiltersProps) => {
   return (
     <Tabs defaultValue={activeFilter} className="mb-8">
       <TabsList>

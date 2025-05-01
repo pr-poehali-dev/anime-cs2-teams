@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Header from "@/components/Header";
 import FooterComponent from "@/components/FooterComponent";
@@ -62,5 +63,8 @@ const Tournaments = () => {
     </div>
   );
 };
+
+export default Tournaments;
+
 
 export default Tournaments;

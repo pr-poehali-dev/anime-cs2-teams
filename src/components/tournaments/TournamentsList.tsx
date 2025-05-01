@@ -1,3 +1,4 @@
+
 import { Tournament } from "@/data/tournamentsData";
 import TournamentCard from "./TournamentCard";
 
@@ -8,7 +9,7 @@ interface TournamentsListProps {
 /**
  * Компонент для отображения списка турниров
  */
-export const TournamentsList = ({ tournaments }: TournamentsListProps) => {
+const TournamentsList = ({ tournaments }: TournamentsListProps) => {
   if (tournaments.length === 0) {
     return (
       <div className="text-center py-12">
