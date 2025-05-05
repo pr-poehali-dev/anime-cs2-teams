@@ -15,10 +15,10 @@ export const tier1Teams: TeamData[] = [
       { id: 1, name: "Александр Костылев", nickname: "s1mple", country: "Украина" },
       { id: 2, name: "Валерий Ваховский", nickname: "b1t", country: "Украина" },
       { id: 3, name: "Илья Залуцкий", nickname: "w0nderful", country: "Украина" },
-      { id: 4, name: "Алекси Виролайнен", nickname: "Aleksib", country: "Финляндия" },
-      { id: 5, name: "Игорь Минскийи", nickname: "iM", country: "Украина" }
+      { id: 4, name: "Юрий Янковский", nickname: "headtr1ck", country: "Украина" },
+      { id: 5, name: "Кирилл Михайлов", nickname: "Boombl4", country: "Россия" }
     ],
-    achievements: "ESL Pro League Season 24, BLAST Premier: World Final 2024, PGL Major Stockholm 2025"
+    achievements: "ESL Pro League Season 24, BLAST Premier: World Final 2024, PGL Major Stockholm 2025, ESL One Cologne 2025"
   },
   {
     id: 2,
@@ -30,11 +30,11 @@ export const tier1Teams: TeamData[] = [
     players: [
       { id: 6, name: "Матье Эрбо", nickname: "ZywOo", country: "Франция" },
       { id: 7, name: "Лотан Гилади", nickname: "Spinx", country: "Израиль" },
-      { id: 8, name: "Уильям Мезерди", nickname: "mezii", country: "Великобритания" },
+      { id: 8, name: "Даниэль Марино", nickname: "apEX", country: "Франция" },
       { id: 9, name: "Шамир Берхами", nickname: "flameZ", country: "Израиль" },
-      { id: 10, name: "Дэн Мадесклер", nickname: "apEX", country: "Франция" }
+      { id: 10, name: "Лукас Росенхольм", nickname: "misutaaa", country: "Франция" }
     ],
-    achievements: "IEM Katowice 2025, BLAST Premier: Spring Finals 2025, ESL Pro League Season 23"
+    achievements: "IEM Katowice 2025, BLAST Premier: Spring Finals 2025, ESL Pro League Season 23, BLAST World Final 2024"
   },
   {
     id: 3,

@@ -12,10 +12,10 @@ export const topPlayersRanking: PlayerRanking[] = [
     photo: "/placeholder.svg",
     country: "Украина",
     team: "Natus Vincere",
-    rating: 1.32,
-    kd: 1.43,
-    kpr: 0.86,
-    impact: 1.41
+    rating: 1.34,
+    kd: 1.45,
+    kpr: 0.87,
+    impact: 1.43
   },
   {
     rank: 2,
@@ -25,10 +25,10 @@ export const topPlayersRanking: PlayerRanking[] = [
     photo: "/placeholder.svg",
     country: "Франция",
     team: "Team Vitality",
-    rating: 1.31,
-    kd: 1.41,
-    kpr: 0.85,
-    impact: 1.39
+    rating: 1.33,
+    kd: 1.44,
+    kpr: 0.86,
+    impact: 1.42
   },
   {
     rank: 3,
@@ -38,10 +38,10 @@ export const topPlayersRanking: PlayerRanking[] = [
     photo: "/placeholder.svg",
     country: "Россия",
     team: "G2 Esports",
-    rating: 1.28,
-    kd: 1.33,
-    kpr: 0.82,
-    impact: 1.35
+    rating: 1.29,
+    kd: 1.35,
+    kpr: 0.84,
+    impact: 1.38
   },
   {
     rank: 4,
@@ -51,23 +51,23 @@ export const topPlayersRanking: PlayerRanking[] = [
     photo: "/placeholder.svg",
     country: "Эстония",
     team: "FaZe Clan",
-    rating: 1.26,
-    kd: 1.29,
-    kpr: 0.78,
-    impact: 1.31
+    rating: 1.28,
+    kd: 1.32,
+    kpr: 0.81,
+    impact: 1.33
   },
   {
     rank: 5,
     previousRank: 4,
-    name: "Дмитрий Соколов",
-    nickname: "sh1ro",
+    name: "Илья Залуцкий",
+    nickname: "w0nderful",
     photo: "/placeholder.svg",
-    country: "Россия",
-    team: "Cloud9",
-    rating: 1.24,
-    kd: 1.31,
-    kpr: 0.76,
-    impact: 1.28
+    country: "Украина",
+    team: "Natus Vincere",
+    rating: 1.27,
+    kd: 1.33,
+    kpr: 0.79,
+    impact: 1.34
   }
 ];
 

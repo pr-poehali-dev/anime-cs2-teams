@@ -1,6 +1,7 @@
 import { TeamRanking, PlayerRanking } from './types/rankings';
 import { teamsRanking, teamsRankingSecondTier } from './rankings/teamsRanking';
 import { topPlayersRanking, secondTierPlayersRanking } from './rankings/playersRanking';
+import { risingStarsRanking } from './rankings/risingStarsRanking';
 import {
   getRankChange,
   filterTeamsBySearchTerm,
@@ -18,11 +19,12 @@ export const allTeamsRanking: TeamRanking[] = [
 ];
 
 /**
- * Полный список игроков в рейтинге (топ-12)
+ * Полный список игроков в рейтинге (топ-20)
  */
 export const allPlayersRanking: PlayerRanking[] = [
   ...topPlayersRanking,
-  ...secondTierPlayersRanking
+  ...secondTierPlayersRanking,
+  ...risingStarsRanking.slice(0, 3) // Добавляем только топ-3 восходящих звезд
 ];
 
 // Реэкспорт типов

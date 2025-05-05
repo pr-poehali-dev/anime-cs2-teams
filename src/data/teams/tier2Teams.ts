@@ -14,11 +14,11 @@ export const tier2Teams: TeamData[] = [
     players: [
       { id: 26, name: "Джонатан Ягер", nickname: "EliGE", country: "США" },
       { id: 27, name: "Кит Маркович", nickname: "NAF", country: "Канада" },
-      { id: 28, name: "Джош Оак", nickname: "oSee", country: "США" },
-      { id: 29, name: "Джейк Йип", nickname: "Stewie2K", country: "США" },
-      { id: 30, name: "Ник Кэннелла", nickname: "nitr0", country: "США" }
+      { id: 28, name: "Марекс Галинскис", nickname: "YEKINDAR", country: "Латвия" },
+      { id: 29, name: "Рубен Вильярроэль", nickname: "VINI", country: "Бразилия" },
+      { id: 30, name: "Адам Торжай", nickname: "flameZ", country: "Израиль" }
     ],
-    achievements: "BLAST Premier: Americas Fall Showdown 2024, ESL Pro League Season 26: North America"
+    achievements: "BLAST Premier: Americas Fall Showdown 2024, ESL Pro League Season 26: North America, IEM Denver 2025"
   },
   {
     id: 7,
@@ -31,10 +31,10 @@ export const tier2Teams: TeamData[] = [
       { id: 31, name: "Тимур Тулепов", nickname: "Jame", country: "Казахстан" },
       { id: 32, name: "Евгений Манелов", nickname: "FL1T", country: "Россия" },
       { id: 33, name: "Давид Даутов", nickname: "n0rb3r7", country: "Россия" },
-      { id: 34, name: "Алексей Голубев", nickname: "fame", country: "Россия" },
-      { id: 35, name: "Алексей Голубев", nickname: "Qikert", country: "Казахстан" }
+      { id: 34, name: "Алексей Голубев", nickname: "NickelBack", country: "Россия" },
+      { id: 35, name: "Марсель Карлто", nickname: "m0tiv8", country: "Казахстан" }
     ],
-    achievements: "PGL Major Asia 2025, IEM Beijing 2024, ESL Pro League CIS 2025"
+    achievements: "PGL Major Asia 2025, IEM Beijing 2024, ESL Pro League CIS 2025, BLAST Moscow 2025"
   },
   {
     id: 8,
